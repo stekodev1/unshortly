@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05060a">
+<title>Unshortly — Destapa el enlace real</title>
+<meta name="description" content="Unshortly: revela el destino real de cualquier enlace acortado — bit.ly, adf.ly, cutt.ly, linkvertise y más. Gratis, sin registro.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2334d399'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M22 42 42 22M28 16h20v20' stroke='white' stroke-width='5.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+  <div class="grid"></div>
+  <div class="grain"></div>
+</div>
+
+<main class="wrap">
+
+  <nav class="nav">
+    <div class="brand">
+      <span class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+      </span>
+      <span class="word">unshortly</span>
+      <span class="betatag">beta</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1><span class="rl"><span>Pega. Destapa.</span></span><span class="rl rl2"><span><em>Listo.</em></span></span></h1>
+    <p class="sub">El destino real de cualquier enlace acortado — sin anuncios, sin esperas.</p>
+    <div class="svcs" aria-label="acortadores soportados">
+      <div class="svcs-track">
+        <span class="svc">bit.ly</span><span class="svc">adf.ly</span><span class="svc">tinyurl</span><span class="svc">cutt.ly</span><span class="svc">t.co</span><span class="svc">linkvertise</span><span class="svc">ouo.io</span><span class="svc">is.gd</span><span class="svc">s.id</span><span class="svc">rb.gy</span><span class="svc">exe.io</span><span class="svc">b23.tv</span><span class="svc">shorturl</span><span class="svc">v.gd</span><span class="svc">rebrand.ly</span><span class="svc">bc.vc</span><span class="svc">shrinkme</span><span class="svc">za.gl</span>
+      </div>
+      <div class="svcs-track" aria-hidden="true">
+        <span class="svc">bit.ly</span><span class="svc">adf.ly</span><span class="svc">tinyurl</span><span class="svc">cutt.ly</span><span class="svc">t.co</span><span class="svc">linkvertise</span><span class="svc">ouo.io</span><span class="svc">is.gd</span><span class="svc">s.id</span><span class="svc">rb.gy</span><span class="svc">exe.io</span><span class="svc">b23.tv</span><span class="svc">shorturl</span><span class="svc">v.gd</span><span class="svc">rebrand.ly</span><span class="svc">bc.vc</span><span class="svc">shrinkme</span><span class="svc">za.gl</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="tool">
+    <div class="inputwrap">
+      <svg class="ilink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <input id="url" type="url" inputmode="url" autocomplete="off" spellcheck="false"
+             autocapitalize="off" autocorrect="off" enterkeyhint="go"
+             placeholder="Pega aquí tu enlace acortado…">
+      <button id="paste" class="ghost" title="Pegar del portapapeles">Pegar</button>
+      <button id="go" class="primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+        <span>Destapar</span>
+      </button>
+    </div>
+    <div id="detected" class="detected hidden"></div>
+  </section>
+
+  <p class="hint">Fase beta — sigue redirecciones y destapa intermediarios conocidos.</p>
+
+  <div id="status" class="status hidden"></div>
+
+  <div id="result" class="result hidden"></div>
+
+  <section id="historysec" class="history hidden">
+    <h2>recientes</h2>
+    <ul id="history"></ul>
+  </section>
+
+  <section class="features">
+    <div class="feat">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+      </div>
+      <h3>Al instante</h3>
+      <p>Sigue la cadena de redirecciones y te enseña el destino en segundos.</p>
+    </div>
+    <div class="feat">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <h3>Ver antes de entrar</h3>
+      <p>Mira a dónde apunta un link raro sin abrirlo ni comerte sus anuncios.</p>
+    </div>
+    <div class="feat">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <h3>Sin rastro</h3>
+      <p>Sin cookies, sin cuentas, sin analítica — tu historial muere al cerrar.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span class="fmark">↗</span> unshortly — Tu enlace, destapado.
+  </footer>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
